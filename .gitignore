@@ -3,3 +3,7 @@
 ################################################################################
 
 /EntityFrameworkCore/.vs/EntityFrameworkCore/v16/Server/sqlite3/db.lock
+/EntityFrameworkCore/.vs/EntityFrameworkCore/v16/Server/sqlite3/storage.ide
+/EntityFrameworkCore/.vs/EntityFrameworkCore/v16/Server/sqlite3/storage.ide-shm
+/EntityFrameworkCore/.vs/EntityFrameworkCore/v16/Server/sqlite3/storage.ide-wal
+/.vs/slnx.sqlite
