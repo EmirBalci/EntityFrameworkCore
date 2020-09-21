@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameworkCore.Api.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200910065959_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200915063249_SeedInitialData")]
+    partial class SeedInitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace EntityFrameworkCore.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EntityFrameworkCore.Api.Entities.Student", b =>
+            modelBuilder.Entity("EntityFrameworkCore.Entities.Student", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnName("StudentId")
@@ -46,6 +46,24 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasKey("Id", "AnotherKeyProperty");
 
                     b.ToTable("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b49e754e-bd5b-4173-8b09-9d2ae69bdd44"),
+                            AnotherKeyProperty = new Guid("00000000-0000-0000-0000-000000000000"),
+                            Age = 24,
+                            IsRegularStudent = false,
+                            Name = "Emir Balcı"
+                        },
+                        new
+                        {
+                            Id = new Guid("8d3a93b7-a903-41dc-bddc-68e08a8393d9"),
+                            AnotherKeyProperty = new Guid("00000000-0000-0000-0000-000000000000"),
+                            Age = 27,
+                            IsRegularStudent = false,
+                            Name = "Emre Balcı"
+                        });
                 });
 #pragma warning restore 612, 618
         }

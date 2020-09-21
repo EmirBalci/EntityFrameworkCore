@@ -4,14 +4,16 @@ using EntityFrameworkCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameworkCore.Api.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200916071520_ManyToManyRelationship")]
+    partial class ManyToManyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,28 +125,28 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a50873df-a369-44f0-bf34-2983dc5d104d"),
+                            Id = new Guid("396c00be-5330-44f7-96fe-382aa8e15972"),
                             Age = 24,
                             IsRegularStudent = false,
                             Name = "Emir Balcı"
                         },
                         new
                         {
-                            Id = new Guid("a71b80db-72d0-4c62-a247-fa7d0b5b78b6"),
+                            Id = new Guid("d57b3e34-00b8-4f56-86e9-e5df2b34199a"),
                             Age = 26,
                             IsRegularStudent = false,
                             Name = "Emre Balcı"
                         },
                         new
                         {
-                            Id = new Guid("72bb74a0-a43f-4619-8283-ebc48cb7e4bd"),
+                            Id = new Guid("db50c140-d87e-480b-b2fb-ca8612c69f91"),
                             Age = 29,
                             IsRegularStudent = false,
                             Name = "Onur Balcı"
                         },
                         new
                         {
-                            Id = new Guid("10876715-1f34-40ec-b8ac-1ef56d593cf8"),
+                            Id = new Guid("c5d97b17-a17f-4d57-8d69-20b257fad8ff"),
                             Age = 45,
                             IsRegularStudent = false,
                             Name = "Nuran Balcı"
@@ -156,7 +158,7 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
                         .WithMany("Evaluations")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

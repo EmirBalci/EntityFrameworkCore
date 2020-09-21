@@ -57,3 +57,5 @@ C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityF
 C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityFrameworkCore.Api\obj\Debug\netcoreapp3.1\EntityFrameworkCore.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityFrameworkCore.Api\obj\Debug\netcoreapp3.1\EntityFrameworkCore.Api.dll
 C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityFrameworkCore.Api\obj\Debug\netcoreapp3.1\EntityFrameworkCore.Api.pdb
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityFrameworkCore.Api\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\EntityFrameworkCore.Api\bin\Debug\netcoreapp3.1\Entities.pdb

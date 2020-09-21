@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkCore.Api.Entities
+namespace EntityFrameworkCore.Entities
 {
     [Table("Student")]
     public class Student
@@ -17,9 +18,10 @@ namespace EntityFrameworkCore.Api.Entities
         [MaxLength(50,ErrorMessage = "50 Karakterden az olmalı...")]
         public string Name { get; set; }
         public int? Age { get; set; }
-        [NotMapped]
-        public int LocalCalculation { get; set; }
-        public Guid AnotherKeyProperty { get; set; }
         public bool IsRegularStudent { get; set; }
+
+        public StudentDetails StudentDetails { get; set; }
+        public ICollection<Evaluation> Evaluations { get; set; }
+        public ICollection<StudentSubject> StudentSubjects { get; set; }
     }
 }

@@ -4,43 +4,22 @@ using EntityFrameworkCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameworkCore.Api.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200916064923_OneToOneRelationshipStudent_StudentDetails")]
+    partial class OneToOneRelationshipStudent_StudentDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Entities.Evaluation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("EvaluationId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AdditionalExplanation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Grade")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Evaluation");
-                });
 
             modelBuilder.Entity("Entities.StudentDetails", b =>
                 {
@@ -64,36 +43,6 @@ namespace EntityFrameworkCore.Api.Migrations
                         .IsUnique();
 
                     b.ToTable("StudentDetails");
-                });
-
-            modelBuilder.Entity("Entities.StudentSubject", b =>
-                {
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("StudentId", "SubjectId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("StudentSubject");
-                });
-
-            modelBuilder.Entity("Entities.Subject", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("SubjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SubjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subject");
                 });
 
             modelBuilder.Entity("EntityFrameworkCore.Entities.Student", b =>
@@ -123,41 +72,32 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a50873df-a369-44f0-bf34-2983dc5d104d"),
+                            Id = new Guid("5e813969-d695-4fb1-834d-0ebcc67e4472"),
                             Age = 24,
                             IsRegularStudent = false,
                             Name = "Emir Balcı"
                         },
                         new
                         {
-                            Id = new Guid("a71b80db-72d0-4c62-a247-fa7d0b5b78b6"),
+                            Id = new Guid("31e89c2d-ba36-461d-8b2e-be12bb9516e9"),
                             Age = 26,
                             IsRegularStudent = false,
                             Name = "Emre Balcı"
                         },
                         new
                         {
-                            Id = new Guid("72bb74a0-a43f-4619-8283-ebc48cb7e4bd"),
+                            Id = new Guid("39d22cf1-1dc5-472c-9d6c-8cc9528d913e"),
                             Age = 29,
                             IsRegularStudent = false,
                             Name = "Onur Balcı"
                         },
                         new
                         {
-                            Id = new Guid("10876715-1f34-40ec-b8ac-1ef56d593cf8"),
+                            Id = new Guid("2041f961-fff8-4412-a80d-66fa152a6492"),
                             Age = 45,
                             IsRegularStudent = false,
                             Name = "Nuran Balcı"
                         });
-                });
-
-            modelBuilder.Entity("Entities.Evaluation", b =>
-                {
-                    b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
-                        .WithMany("Evaluations")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.StudentDetails", b =>
@@ -165,21 +105,6 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
                         .WithOne("StudentDetails")
                         .HasForeignKey("Entities.StudentDetails", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Entities.StudentSubject", b =>
-                {
-                    b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Subject", "Subject")
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

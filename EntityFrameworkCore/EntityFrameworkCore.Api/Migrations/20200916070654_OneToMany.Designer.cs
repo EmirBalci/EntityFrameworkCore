@@ -4,14 +4,16 @@ using EntityFrameworkCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameworkCore.Api.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200916070654_OneToMany")]
+    partial class OneToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,36 +68,6 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.ToTable("StudentDetails");
                 });
 
-            modelBuilder.Entity("Entities.StudentSubject", b =>
-                {
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("StudentId", "SubjectId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("StudentSubject");
-                });
-
-            modelBuilder.Entity("Entities.Subject", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("SubjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SubjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subject");
-                });
-
             modelBuilder.Entity("EntityFrameworkCore.Entities.Student", b =>
                 {
                     b.Property<Guid>("Id")
@@ -123,28 +95,28 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a50873df-a369-44f0-bf34-2983dc5d104d"),
+                            Id = new Guid("7251ea7b-9240-472d-85bb-5ddf266dc09f"),
                             Age = 24,
                             IsRegularStudent = false,
                             Name = "Emir Balcı"
                         },
                         new
                         {
-                            Id = new Guid("a71b80db-72d0-4c62-a247-fa7d0b5b78b6"),
+                            Id = new Guid("9505643d-b637-440e-82c3-9605bb9aa37e"),
                             Age = 26,
                             IsRegularStudent = false,
                             Name = "Emre Balcı"
                         },
                         new
                         {
-                            Id = new Guid("72bb74a0-a43f-4619-8283-ebc48cb7e4bd"),
+                            Id = new Guid("d7ee5310-6b9d-43ed-87f3-04d71fcb97aa"),
                             Age = 29,
                             IsRegularStudent = false,
                             Name = "Onur Balcı"
                         },
                         new
                         {
-                            Id = new Guid("10876715-1f34-40ec-b8ac-1ef56d593cf8"),
+                            Id = new Guid("3d995ce6-5dc5-4930-abca-b1f51c223e0b"),
                             Age = 45,
                             IsRegularStudent = false,
                             Name = "Nuran Balcı"
@@ -156,7 +128,7 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
                         .WithMany("Evaluations")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -165,21 +137,6 @@ namespace EntityFrameworkCore.Api.Migrations
                     b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
                         .WithOne("StudentDetails")
                         .HasForeignKey("Entities.StudentDetails", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Entities.StudentSubject", b =>
-                {
-                    b.HasOne("EntityFrameworkCore.Entities.Student", "Student")
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Subject", "Subject")
-                        .WithMany("StudentSubjects")
-                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

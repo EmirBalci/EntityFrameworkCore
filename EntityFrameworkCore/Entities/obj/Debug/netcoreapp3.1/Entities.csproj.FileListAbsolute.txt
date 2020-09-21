@@ -1,0 +1,8 @@
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\bin\Debug\netcoreapp3.1\Entities.deps.json
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\obj\Debug\netcoreapp3.1\Entities.csprojAssemblyReference.cache
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfoInputs.cache
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfo.cs
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\obj\Debug\netcoreapp3.1\Entities.dll
+C:\Users\emir.balci\source\repos\EntityFrameworkCore\EntityFrameworkCore\Entities\obj\Debug\netcoreapp3.1\Entities.pdb
